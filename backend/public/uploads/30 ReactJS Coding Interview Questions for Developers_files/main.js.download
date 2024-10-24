@@ -1,0 +1,60 @@
+(function ($) {
+   
+	$(".wp-block-navigation__submenu-container").hide();
+
+    $(".wp-block-navigation__submenu-icon").on("click", function () {
+        $(this)
+            .parent()
+            .toggleClass("active")
+            .children(".wp-block-navigation__submenu-container")
+            .slideToggle();
+    });
+
+    $(".sub-menu-parent > a").on("click", function (e) {
+        e.preventDefault();
+    });
+
+	var stickyNav = function(){
+        var scrollTop = $(window).scrollTop(); 
+
+        if (scrollTop > stickyNavTop) {
+         
+            $('header').addClass('sticky');
+        } else {
+            $('header').removeClass('sticky'); 
+        } 
+    };
+
+    $(document).ready(function() {
+        $('a[href="#"],a[href=""],[href="javascript:void(0)"]').attr({'role': 'button'});
+		$('a[target="_blank"]').append('<span class="screen-reader-text">(Open Link in new window)</span>');
+        $(".navigation-nav .wp-block-navigation__container li.has-child  > a").removeAttr("href").css({'cursor': 'pointer'});
+        $(".custom-logo-link").attr("href", "https://codeinterview.io/");
+       $('figure').each(function(){
+			if($(this).find('img').length>0){
+				var label = $(this).find('img').attr('alt');
+				$(this).attr({'role': 'none', 'alt': label})
+			}
+		});
+
+        $('h1').next('p').attr({
+			"role": "heading",
+			"aria-level": "2"
+		});
+
+        var $allMenus = $("li.has-child");
+        var $allToggles = $allMenus.children('a');
+        $allToggles.attr({
+          "aria-haspopup": "true",
+          "aria-expanded": "false",
+          "role": "button"
+        });
+    
+    });
+
+    var stickyNavTop = $('header').offset().top;
+    $(window).scroll(function(){
+        stickyNav(); 
+    })
+
+}(jQuery));

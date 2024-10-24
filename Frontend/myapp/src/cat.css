@@ -1,0 +1,32 @@
+/* CategoryPage.css */
+
+.category-list {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.category-list h2 {
+    margin-bottom: 20px;
+}
+
+.category-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-list li {
+    margin-bottom: 10px;
+}
+
+.category-list a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.category-list a:hover {
+    text-decoration: underline;
+}
